@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Últimos Movimientos - Billetera Digital</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0f172a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .history-container {
+            background-color: #1e293b;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #334155;
+        }
+        h2 {
+            color: #f8fafc;
+            font-weight: 600;
+        }
+        .form-label {
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+        .form-select {
+            background-color: #334155;
+            border: 1px solid #475569;
+            color: #ffffff;
+        }
+        .form-select:focus {
+            background-color: #334155;
+            border-color: #3b82f6;
+            color: #ffffff;
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+        }
+        .transaction-item {
+            background-color: #334155;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+        .transaction-item:hover {
+            transform: translateX(3px);
+        }
+        .tx-title {
+            color: #f8fafc;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .tx-date {
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+        .tx-badge {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 3px;
+        }
+        .badge-deposito { background-color: rgba(16, 185, 129, 0.15); color: #34d399; }
+        .badge-envio { background-color: rgba(239, 68, 68, 0.15); color: #f87171; }
+        .badge-compra { background-color: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+        
+        .amount-positive { color: #34d399; font-weight: 600; }
+        .amount-negative { color: #f87171; font-weight: 600; }
+        .btn-back {
+            background-color: transparent;
+            border: 1px solid #475569;
+            color: #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        .btn-back:hover,
+        .btn-back:focus,
+        .btn-back:focus-visible {
+            background-color: #334155;
+            color: #ffffff !important; /* Asegura legibilidad total con TAB */
+            outline: none;
+            box-shadow: 0 0 0 0.25rem rgba(203, 213, 225, 0.2);
+        }
+
+        .btn-back:hover {
+            background-color: #334155;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="history-container">
+    <h2 class="text-center mb-4">Últimos Movimientos</h2>
+
+    <div class="mb-4">
+        <label for="filterType" class="form-label">Filtrar por tipo de operación</label>
+        <select class="form-select" id="filterType">
+            <option value="todos">Todos los movimientos</option>
+            <option value="deposito">Depósitos recibidos</option>
+            <option value="envio">Transferencias enviadas</option>
+            <option value="compra">Compras realizadas</option>
+        </select>
+    </div>
+
+    <div id="transactionContainer" class="mb-4" style="max-height: 350px; overflow-y: auto; padding-right: 5px;">
+        </div>
+
+    <a href="menu.html" class="btn btn-back w-100 py-2 rounded-3 text-decoration-none text-center d-block">
+        Volver al Menú
+    </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="mostrar_movimientos.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depositar - Billetera Digital</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0f172a;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .deposit-container {
+            background-color: #1e293b;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 100%;
+            border: 1px solid #334155;
+        }
+        h2 {
+            color: #f8fafc;
+            font-weight: 600;
+        }
+        .form-label {
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+        .saldo-texto {
+            color: #38bdf8;
+            font-weight: 600;
+        }
+        .form-control {
+            background-color: #334155;
+            border: 1px solid #475569;
+            color: #ffffff;
+        }
+        .form-control:focus {
+            background-color: #334155;
+            border-color: #3b82f6;
+            color: #ffffff;
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+        }
+        .btn-deposit {
+            background-color: #10b981;
+            color: #ffffff;
+            font-weight: 500;
+            padding: 12px;
+            border: none;
+            transition: all 0.2s ease;
+        }
+        /* Mantiene la legibilidad al pasar el cursor, usar TAB o seleccionarlo */
+        .btn-deposit:hover,
+        .btn-deposit:focus,
+        .btn-deposit:focus-visible {
+            background-color: #059669;
+            color: #ffffff !important; /* El !important asegura que Bootstrap no cambie el texto a un color oscuro */
+            outline: none;
+            box-shadow: 0 0 0 0.25rem rgba(16, 185, 129, 0.3); /* Un sutil anillo de enfoque verde */
+        }
+
+
+        .btn-back {
+            background-color: transparent;
+            border: 1px solid #475569;
+            color: #cbd5e1;
+            transition: background-color 0.2s ease;
+        }
+        .btn-back:hover {
+            background-color: #334155;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="deposit-container">
+    <h2 class="text-center mb-4">Depositar</h2>
+
+    <div class="mb-3 text-center text-muted">
+        <span>Saldo actual: </span><span id="saldoActualDisplay" class="saldo-texto">$0,00</span>
+    </div>
+
+    <div id="alert-container"></div>
+
+    <form id="depositForm">
+        <div class="mb-4">
+            <label for="amountInput" class="form-label">Monto a depositar</label>
+            <div class="input-group">
+                <span class="input-group-text bg-secondary border-0 text-white">$</span>
+                <input type="number" class="form-control" id="amountInput" placeholder="0.00" min="1" step="any" required>
+            </div>
+            <div class="form-text mt-2" style="color: #94a3b8 !important;">
+                El dinero se acreditará de forma inmediata en tu cuenta.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-deposit w-100 rounded-3 mb-3" id="btnRealizarDeposito">
+            Realizar depósito
+        </button>
+
+        <a href="menu.html" class="btn btn-back w-100 rounded-3 text-decoration-none text-center d-block py-2">
+            Volver al menú
+        </a>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="procesar_deposito.js"></script>
+
+</body>
+</html>

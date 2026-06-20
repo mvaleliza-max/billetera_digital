@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal - Billetera Digital</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #0f172a; height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .menu-container { background-color: #1e293b; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); max-width: 450px; width: 100%; border: 1px solid #334155; }
+        h2 { color: #f8fafc; font-weight: 600; }
+        .balance-box { background-color: #334155; border: 1px solid #475569; border-radius: 8px; padding: 20px; }
+        .balance-label { color: #94a3b8; font-size: 0.9rem; text-transform: uppercase; }
+        .balance-amount { color: #38bdf8; font-size: 2rem; font-weight: 700; margin-top: 5px; }
+        .btn-menu { background-color: #2563eb; color: #ffffff; font-weight: 500; padding: 12px; text-align: center; display: block; width: 100%; }
+        .btn-menu:hover { background-color: #1d4ed8; color: #ffffff; }
+
+        .btn-secondary-custom {
+            background-color: transparent;
+            border: 1px solid #475569;
+            color: #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        /* Mantiene el texto visible y añade un estado claro al usar la tecla TAB o pasar el cursor */
+        .btn-secondary-custom:hover,
+        .btn-secondary-custom:focus,
+        .btn-secondary-custom:focus-visible {
+            background-color: #334155;
+            color: #ffffff !important; /* Evita que el texto se oscurezca */
+            outline: none;
+            box-shadow: 0 0 0 0.25rem rgba(203, 213, 225, 0.2); /* Un anillo de enfoque gris sutil */
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu-container">
+    <h2 class="text-center mb-4">Mi Billetera</h2>
+
+    <div class="balance-box text-center mb-4">
+        <div class="balance-label">Saldo Disponible</div>
+        <div class="balance-amount">$10.500,00</div>
+    </div>
+
+    <div id="menuAlertContainer"></div>
+
+    <div class="d-grid gap-3">
+        <a href="deposit.html" class="btn btn-menu rounded-3 text-decoration-none">Depositar</a>
+        <a href="sendmoney.html" class="btn btn-menu rounded-3 text-decoration-none">Enviar Dinero</a>
+        <a href="transactions.html" class="btn btn-menu rounded-3 text-decoration-none">Últimos Movimientos</a>
+        <a href="login.html" class="btn btn-secondary-custom rounded-3 mt-2 py-2 text-decoration-none text-center">Cerrar sesión</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="navegacion_menu.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const balanceAmountElement = document.querySelector('.balance-amount');
+        if (balanceAmountElement) {
+            let saldoGuardado = localStorage.getItem('saldoBilletera') || "10500";
+            let saldo = parseFloat(saldoGuardado);
+            balanceAmountElement.textContent = `$${saldo.toLocaleString('es-ES', { minimumFractionDigits: 2 })}`;
+        }
+    });
+</script>
+</body>
+</html>
